@@ -2,7 +2,7 @@
 
 class Url < ActiveRecord::Base
 
-	def  self.generate_short_url 
-		self.hash.abs.to_s(36)
+	def  self.generate_short_url(url) 
+		url.hash.abs.to_s(36)
 	end 
 end
