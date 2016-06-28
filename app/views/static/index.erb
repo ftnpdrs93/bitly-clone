@@ -1,5 +1,23 @@
+
+<h1>Hello World</h1>
+<p>Bitly: Building Our First Web App</p>
+
 <form action="#" method="">
-	Enter URL: 
+	Enter http:// 
 	<input type ="text" name="long_url"> 
 	<input type="submit" value="Submit">
 </form>
+
+<table style= "border:solid 2px black;">
+	<tr> 
+		<th>Long url</th>
+		<th>Short url</th>
+	</tr>
+
+<% @url.each do |x| %> 
+	<tr> 
+		<td><%= x.long_url%></td>
+		<td><%= x.short_url%></td>
+	</tr>
+		<%end%> 
+</table>
