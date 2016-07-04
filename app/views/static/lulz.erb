@@ -1,0 +1,38 @@
+<!DOCTYPE html> 
+<html>
+<!--I'm a comment--> 
+	<center><head> 
+	<link rel="stylesheet" type="text/css"  href="application.css"/>
+		
+		<%= @error if @error %>
+
+	</head></center>
+
+	<body>
+		<strong><h1><center>SHORTEN. SHARE. MEASURE.</center></h1></strong>
+
+		<center>
+		<p style="font-size:16px; color:#696969; font-family:Bodoni">Drive app installs and re-engagement with deep thinking by Bitly. <a href="https://bitly.com/pages/tour" ><em> Learn More</em></a></p> 
+		<a href="https://bitly.com/"><img src="https://s3.amazonaws.com/static.bitly.com/graphics/blog/2015/AppBitlinks_Blog.png" /></a>
+		<form action="/urls" method="post">
+			<input type ="text" name="long_url" placeholder="Paste a link to shorten it"> 
+			<input type="submit" value="Submit">
+		</form>
+
+					
+		<table border="1px"; style="width:50%" >
+			<tr> 
+				<th>Long url</th>
+				<th>Short url</th>
+				<th>Click Count</th>
+			</tr>
+
+			<tr> 
+				<td><%= @url.long_url%></td>
+				<td><a href="/<%=@url.short_url%>" target = "_blank">http:/		/bit.ly/<%= @url.short_url%></a></td> 
+				<td><%= @url.click_count %></td>
+			</tr>
+		</table>
+		</center>
+	</body>
+</html> 

@@ -6,19 +6,31 @@ get '/' do
 end
 
 post '/urls' do
-  @url = Url.create(long_url: params[:long_url], short_url: Url.generate_short_url(params[:long_url]))
-  redirect '/'
+	@url = Url.find_by(long_url: params[:long_url])
+
+	if @url.nil? 
+  	@url = Url.create(long_url: params[:long_url], short_url: Url.generate_short_url(params[:long_url]))
+  else 
+  	p @url 
+  end 
+redirect "/lolz/#{@url.long_url}"
 end
 
 # i.e. /q6bda
+get '/lolz/:long_url' do
+
+  @url = Url.find_by(long_url: params[:long_url])
+
+  erb :"static/lulz"
+end 
 
 get '/:short_url' do
+
   @url = Url.find_by(short_url: params[:short_url])
-  redirect "http://" +@url.long_url
+  @url.click_count += 1
+  @url.save
+  redirect "http://" + @url.long_url
 end
 
-get '/' do 
-	puts "[LOG] Getting /"
-	puts "[LOG] Params: #{params.inspect}"
-	erb :index 
-end 
+
+

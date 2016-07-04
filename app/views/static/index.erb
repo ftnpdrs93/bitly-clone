@@ -1,11 +1,12 @@
 
-<h1>Hello World</h1>
-<p>Bitly: Building Our First Web App</p>
+<h1><center>SHORTEN. SHARE. MEASURE.</center></h1>
+<p><center>Join Bitly, the world's leading link management platform.<center></p>
 
+<%= @error if @error %>
 <form action="/urls" method="post">
-	Enter http:// 
+
 	<input type ="text" name="long_url"> 
-	<input type="submit" value="Submit">
+	<input type="submit" value="SHORTEN">
 </form>
 
 <table style= "border:solid 2px black;">
@@ -17,7 +18,8 @@
 <% @url.each do |x| %> 
 	<tr> 
 		<td><%= x.long_url%></td>
-		<td><%= x.short_url%></td>
+		<td><a href="/<%=x.short_url%>" target = "_blank">http://bit.ly/<%= x.short_url%></a></td> 
 	</tr>
 		<%end%> 
 </table>
+
